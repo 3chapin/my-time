@@ -2,8 +2,23 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
+		<script>
+			const theme = (() => {
+				try {
+					return localStorage.getItem('theme') === 'light' ? 'light' : 'dark'
+				} catch {
+					return 'dark'
+				}
+			})()
+
+			const link = document.createElement('link')
+			link.id = 'tiny-theme'
+			link.rel = 'stylesheet'
+			link.href = `/tiny/${theme}.css`
+			document.head.appendChild(link)
+		</script>
+
 		<link rel="icon" type="image/svg+xml" href="" />
-		<link id="tiny-theme" rel="stylesheet" href="/tiny/dark.css" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>my time</title>
 	</head>
